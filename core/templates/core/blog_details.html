@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %} Nurly Şöhle | {{ blog.title }}{% endblock %}
+{% block content %}
+    <main>
+        <!--? slider Area Start-->
+        <section class="slider-area slider-area2">
+            <div class="slider-active">
+                <!-- Single Slider -->
+                <div class="single-slider slider-height2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-8 col-lg-11 col-md-12">
+                                <div class="hero__caption hero__caption2">
+                                    <h1 data-animation="bounceIn" data-delay="0.2s" style="font-size: 43px">{{ blog.title }}</h1>
+                                    <!-- breadcrumb Start-->
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="{% url 'home' %}">Baş sahypa</a></li>
+                                            <li class="breadcrumb-item"><a href="{% url 'blog' %}">Çäreler</a></li>
+                                        </ol>
+                                    </nav>
+                                    <!-- breadcrumb End -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--? Blog Area Start -->
+        <section class="blog_area single-post-area section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 posts-list">
+                        <div class="single-post">
+                            <div class="feature-img">
+                                <img class="img-fluid" src="{{ blog.img1.url }}" alt="">
+                            </div>
+                            <div class="blog_details">
+                                <h2 style="color: #2d2d2d;">{{ blog.title }}
+                                </h2>
+                                <ul class="blog-info-link mt-3 mb-4">
+                                    <li><i class="fa fa-eye"></i> {{ blog.views }}</li>
+                                </ul>
+                                <p class="excert">
+                                    {{ blog.content }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="navigation-top">
+                            <div class="d-sm-flex justify-content-between text-center">
+                                <p class="like-info"><span class="align-middle">
+                                <a href="{% url 'add_like' blog.slug %}">
+                                  {% if request.user in blog.likes.all %}
+                                    <i class="fa fa-heart" style="color: red"></i>
+                                  {% else %}
+                                    <i class="fa fa-heart" style="color: gray"></i>
+                                  {% endif %}
+                                </a>
+                                </span> {{ blog.likes.count }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Blog Area End -->
+    </main>
+
+{% endblock %}

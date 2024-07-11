@@ -1,0 +1,154 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}Nurly Şöhle | Giriş et{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/progressbar_barfiller.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animated-headline.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+</head>
+<style>
+    .errorlist {
+        color: red;
+    }
+</style>
+<body style="background: #6f42c1">
+<!-- ? Preloader Start -->
+<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="preloader-circle"></div>
+            <div class="preloader-img pere-text">
+                <img src="{% static 'assets/img/logo/loder.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+    <main class="login-body" data-vide-bg="">
+        <div class="container mt-4" style="padding: 20px">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="{% url 'home' %}" class="btn btn-primary">Baş sahypa</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Admin -->
+        <form class="form-default" method="POST">
+            
+            <div class="login-form">
+                <!-- logo-login -->
+                <div class="logo-login">
+                    <a href="index.html"><img src="{% static 'assets/img/logo/loder.png' %}" alt=""></a>
+                </div>
+                <h2>Giriş et</h2>
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="form-input">
+                    <label for="{{ form.username.id_for_label }}">Ady</label>
+                    {{ form.username }}
+                    {{ form.username.errors }}
+                </div>
+                <div class="form-input">
+                    <label for="{{ form.password.id_for_label }}">Parol</label>
+                    {{ form.password }}
+                    {{ form.password.errors }}
+                </div>
+                <div class="form-input pt-30">
+                    <input type="submit" name="submit" value="Giriş et">
+                </div>
+                <a href="{% url 'sign-up' %}" class="registration">Agza bol</a>
+            </div>
+        </form>
+        <!-- /end login form -->
+    </main>
+
+    <div class="container mt-4">
+    <div class="row">
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <div class="col-md-6">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            {% else %}
+                <div class="col-md-6">
+                    <!-- Success Message -->
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+<!-- JS here -->
+<script src="{% static 'assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<!-- Jquery Mobile Menu -->
+<script src="{% static 'assets/js/jquery.slicknav.min.js' %}"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/js/slick.min.js' %}"></script>
+<!-- One Page, Animated-HeadLin -->
+<script src="{% static 'assets/js/wow.min.js' %}"></script>
+<script src="{% static 'assets/js/animated.headline.js' %}"></script>
+<script src="{% static 'assets/js/jquery.magnific-popup.js' %}"></script>
+
+<!-- Date Picker -->
+<script src="{% static 'assets/js/gijgo.min.js' %}"></script>
+<!-- Nice-select, sticky -->
+<script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
+<!-- Progress -->
+<script src="{% static 'assets/js/jquery.barfiller.js' %}"></script>
+
+<!-- counter , waypoint,Hover Direction -->
+<script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'assets/js/waypoints.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
+<script src="{% static 'assets/js/hover-direction-snake.min.js' %}"></script>
+
+<!-- contact js -->
+<script src="{% static 'assets/js/contact.js' %}"></script>
+<script src="{% static 'assets/js/jquery.form.js' %}"></script>
+<script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'assets/js/mail-script.js' %}"></script>
+<script src="{% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
+
+<!-- Jquery Plugins, main Jquery -->
+<script src="{% static 'assets/js/plugins.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+</html>

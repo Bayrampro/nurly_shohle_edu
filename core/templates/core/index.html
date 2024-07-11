@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Nurly Şöhle | Baş sahypa{% endblock %}
+{% block content %}
+ <main>
+        <section class="slider-area ">
+            <div class="slider-active">
+                <div class="single-slider slider-height d-flex align-items-center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-7 col-md-12">
+                                <div class="hero__caption">
+                                    <h1 data-animation="fadeInLeft" data-delay="0.2s">Nurly Şöhle Ylmy<br> okuw merkezi</h1>
+                                    <p data-animation="fadeInLeft" data-delay="0.4s">Eşretli durmuşyň gözbaşy ylym-bilimdir</p>
+                                    <a href="{% url 'course' %}" class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.7s">Okamaga geliň</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="services-area">
+            <div class="container">
+                <div class="row justify-content-sm-center">
+                    <div class="col-lg-4 col-md-6 col-sm-8">
+                        <div class="single-services mb-30">
+                            <div class="features-icon">
+                                <img src="{% static 'assets/img/icon/icon1.svg' %}" alt="">
+                            </div>
+                            <div class="features-caption">
+                                <h3>Stem usuly</h3>
+                                <p>The automated process all your website tasks.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-8">
+                        <div class="single-services mb-30">
+                            <div class="features-icon">
+                                <img src="{% static 'assets/img/icon/icon2.svg' %}" alt="">
+                            </div>
+                            <div class="features-caption">
+                                <h3>Tejribeli mugallymlar</h3>
+                                <p>The automated process all your website tasks.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-8">
+                        <div class="single-services mb-30">
+                            <div class="features-icon">
+                                <img src="{% static 'assets/img/icon/icon3.svg' %}" alt="">
+                            </div>
+                            <div class="features-caption">
+                                <h3>Döwrebap otaglar</h3>
+                                <p>The automated process all your website tasks.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="courses-area section-padding40 fix">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-8">
+                        <div class="section-tittle text-center mb-55">
+                            <h2>Biziň kurslarymyz</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="courses-actives">
+                    {% for item in lessons %}
+                    <div class="properties pb-20">
+                        <div class="properties__card">
+                            <div class="properties__img overlay1">
+                                <a href="#"><img src="{{ item.img.url }}" alt=""></a>
+                            </div>
+                            <div class="properties__caption">
+                                <h3><a href="#">{{ item.title }}</a></h3>
+                                <div class="properties__footer d-flex justify-content-between align-items-center">
+                                    <div class="price">
+                                        <span>$135</span>
+                                    </div>
+                                </div>
+                                <a href="{{ item.get_absolute_url }}" class="border-btn border-btn2">Doly oka...</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <section class="about-area1 fix pt-10">
+            <div class="support-wrapper align-items-center">
+                <div class="left-content1">
+                    <div class="about-icon">
+                        <img src="{% static 'assets/img/icon/about.svg' %}" alt="">
+                    </div>
+                    <!-- section tittle -->
+                    <div class="section-tittle section-tittle2 mb-55">
+                        <div class="front-text">
+                            <h2 class="">Biz bilen täze zatlary öwreniň</h2>
+                            <p>Oka, öwren, döret</p>
+                        </div>
+                    </div>
+                    <div class="single-features">
+                        <div class="features-icon">
+                            <img src="{% static 'assets/img/icon/right-icon.svg' %}" alt="">
+                        </div>
+                        <div class="features-caption">
+                            <p>Eşretli durmuşyň gözbaşy ylym-bilimdir.</p>
+                        </div>
+                    </div>
+                    <div class="single-features">
+                        <div class="features-icon">
+                            <img src="{% static 'assets/img/icon/right-icon.svg' %}" alt="">
+                        </div>
+                        <div class="features-caption">
+                            <p>Sizem bizden biri boluň!</p>
+                        </div>
+                    </div>
+
+                    <div class="single-features">
+                        <div class="features-icon">
+                            <img src="{% static 'assets/img/icon/right-icon.svg' %}" alt="">
+                        </div>
+                        <div class="features-caption">
+                            <p>Üstünligiň gözbaşy - günde kämilleşmekdir</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-content1">
+                    <!-- img -->
+                    <div class="right-img">
+                        <img src="{% static 'assets/img/gallery/about.png' %}" alt="">
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="topic-area section-padding40">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-8">
+                        <div class="section-tittle text-center mb-55">
+                            <h2>Biziň ugurlarymyz</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for item in random_deps %}
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-topic text-center mb-30">
+                            <div class="topic-img">
+                                <img src="{{ item.img.url }}" alt="">
+                                <div class="topic-content-box">
+                                    <div class="topic-content">
+                                        <h3><a href="{{ item.get_absolute_url }}">{{ item.name }}</a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <section class="team-area section-padding40 fix">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-8">
+                        <div class="section-tittle text-center mb-55">
+                            <h2>Tejribeli mugallymlarymyz</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-active">
+                    {% for item in teachers %}
+                    <div class="single-cat text-center">
+                        <div class="cat-icon">
+                            <img src="{{ item.img.url }}" alt="">
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="#">{{ item.name }}</a></h5>
+                            <p>Bilimi: {{ item.education }}</p>
+                            <p>Okadýan ugry: {{ item.lessons }}</p>
+                            <p>Gyzyklanmasy: {% for i in item.hobbies.all %}{{ i.hobby }} {% endfor %}</p>
+                            <p>Iş tejribesi: {{ item.experience }} ýyl</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %} Nurly Şöhle | Wideolar {% endblock %}
+{% block content %}
+
+    <!--? slider Area Start-->
+    <section class="slider-area slider-area2">
+        <div class="slider-active">
+            <!-- Single Slider -->
+            <div class="single-slider slider-height2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-11 col-md-12">
+                            <div class="hero__caption hero__caption2">
+                                <h1 data-animation="bounceIn" data-delay="0.2s"
+                                    style="font-size: 43px">Wideolar</h1>
+                                <!-- breadcrumb Start-->
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="{% url 'home' %}">Baş sahypa</a></li>
+                                        <li class="breadcrumb-item"><a href="{% url 'blog' %}">Çäreler</a></li>
+                                    </ol>
+                                </nav>
+                                <!-- breadcrumb End -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--? Blog Area Start -->
+
+    <div class="container mt-5">
+        <div class="card-deck">
+          {% for item in videos %}
+            <div class="card">
+                <video controls width="100%" height="350" src="{{ item.video.url }}" frameborder="0" allowfullscreen></video>
+                <div class="card-body">
+                    <h3 class="card-title">{{ item.title }}</h3>
+                </div>
+            </div>
+          {% endfor %}
+        </div>
+    </div><br><br><br><br>
+{% endblock %}

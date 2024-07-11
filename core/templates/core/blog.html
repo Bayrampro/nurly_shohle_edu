@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Nurly Şöhle | Çäreler{% endblock %}
+{% block content %}
+        <main>
+        <!--? slider Area Start-->
+        <section class="slider-area slider-area2">
+            <div class="slider-active">
+                <!-- Single Slider -->
+                <div class="single-slider slider-height2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-8 col-lg-11 col-md-12">
+                                <div class="hero__caption hero__caption2">
+                                    <h1 data-animation="bounceIn" data-delay="0.2s">Çäreler</h1>
+                                    <!-- breadcrumb Start-->
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="{% url 'home' %}">Baş sahypa</a></li>
+                                            <li class="breadcrumb-item"><a href="{% url 'blog' %}">Çäreler</a></li>
+                                        </ol>
+                                    </nav>
+                                    <!-- breadcrumb End -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--? Blog Area Start-->
+        <section class="blog_area section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mb-5 mb-lg-0">
+                        <div class="blog_left_sidebar">
+                            {% for item in page_obj %}
+                            <article class="blog_item">
+                                <div class="blog_item_img">
+                                    <img class="card-img rounded-0" src="{{ item.img1.url }}" alt="">
+                                    <a href="#" class="blog_item_date">
+                                        <h3>{{ item.created_at|date:'d' }}</h3>
+                                        <p>{{ item.created_at|date:'m/Y' }}</p>
+                                    </a>
+                                </div>
+                                <div class="blog_details">
+                                    <a class="d-inline-block" href="{{ item.get_absolute_url }}">
+                                        <h2 class="blog-head" style="color: #2d2d2d;">{{ item.title }}</h2>
+                                    </a>
+                                    <p>{{ item.content|truncatewords:30 }}</p>
+                                    <ul class="blog-info-link">
+                                        <li><i class="fa fa-eye"></i>{{ item.views }}</li>
+                                    </ul>
+                                </div>
+                            </article>
+                            {% endfor %}
+                            <nav class="blog-pagination justify-content-center d-flex">
+                                <ul class="pagination">
+                                    {% if page_obj.has_previous %}
+                                    <li class="page-item">
+                                        <a href="?page={{ page_obj.previous_page_number }}" class="page-link" aria-label="Previous">
+                                            <i class="ti-angle-left"></i>
+                                        </a>
+                                    </li>
+                                    {% endif %}
+
+                                    {% for p in page_obj.paginator.page_range %}
+                                    {% if page_obj.number == p %}
+                                    <li class="page-item">
+                                        <a href="?page={{ p }}" class="page-link">{{ p }}</a>
+                                    </li>
+                                    {% elif p > page_obj.number|add:-3 and p < page_obj.number|add:3 %}
+                                    <li class="page-item active">
+                                        <a href="?page={{ p }}" class="page-link">{{ p }}</a>
+                                    </li>
+                                    {% endif %}
+                                    {% endfor %}
+
+                                    {% if page_obj.has_next %}
+                                    <li class="page-item">
+                                        <a href="?page={{ page_obj.next_page_number }}" class="page-link" aria-label="Next">
+                                            <i class="ti-angle-right"></i>
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="blog_right_sidebar">
+                            <aside class="single_sidebar_widget popular_post_widget">
+                                <h3 class="widget_title" style="color: #2d2d2d;">Halananlar</h3>
+                                {% for i in popular %}
+                                <div class="media post_item">
+                                    <img src="{{ i.img1.url }}" alt="post" width="80" height="80">
+                                    <div class="media-body">
+                                        <a href="{{ i.get_absolute_url }}">
+                                            <h3 style="color: #2d2d2d;">{{ i.title }}</h3>
+                                        </a>
+                                        <p>{{ i.created_at|timesince }} mundan ozal</p>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Blog Area End -->
+    </main>
+{% endblock %}

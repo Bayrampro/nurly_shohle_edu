@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Nurly Şöhle | {{ course_dep.name }}{% endblock %}
+{% block content %}
+    <section class="slider-area slider-area2">
+            <div class="slider-active">
+                <!-- Single Slider -->
+                <div class="single-slider slider-height2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-8 col-lg-11 col-md-12">
+                                <div class="hero__caption hero__caption2">
+                                    <h1 data-animation="bounceIn" data-delay="0.2s">{{ lesson.title }}-{{ course_dep.name }}</h1>
+                                    <!-- breadcrumb Start-->
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="{% url 'home' %}">Baş sahypa</a></li>
+                                            <li class="breadcrumb-item"><a href="#">Services</a></li>
+                                        </ol>
+                                    </nav>
+                                    <!-- breadcrumb End -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <section class="blog_area single-post-area section-padding">
+        <div class="container">
+            <se class="row">
+                <div class="col-lg-8 posts-list">
+                    <div class="single-post">
+                        <div class="feature-img">
+                            <img class="img-fluid" src="{{ course_dep.img.url }}" alt="">
+                        </div>
+                        <div class="blog_details">
+                            <h2 style="color: #2d2d2d;">
+                                {{ course_dep.name }}
+                            </h2>
+                            <ul class="blog-info-link mt-3 mb-4">
+                                <li><a href="{{ lesson.get_absolute_url }}"><i class="fa fa-book"></i>{{ lesson.title }}</a></li>
+                            </ul>
+                            <p class="excert">
+                                {{ course_dep.content|linebreaks }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </se>
+        </div>
+    </section>
+{% endblock %}
